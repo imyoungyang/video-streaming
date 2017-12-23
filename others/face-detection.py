@@ -13,7 +13,8 @@ cap.set(cv2.CAP_PROP_FRAME_HEIGHT,720)
 
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'avc1')
-out = cv2.VideoWriter('output.mkv',fourcc, 20.0, (1280,720))
+#out = cv2.VideoWriter('output.mkv',fourcc, 20.0, (1280,720))
+#out = cv2.VideoWriter('output.mp4',fourcc, 30.0, (1280,720))
 
 
 while(True):
