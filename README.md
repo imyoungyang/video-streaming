@@ -1,7 +1,7 @@
 # RealTime Video Face Detection
 
 ## Demo Link
-[![Face detection (http://img.youtube.com/vi/82zVzJDMcNo/0.jpg)](http://www.youtube.com/watch?v=82zVzJDMcNo "RealTime Face Detection")
+[![Face detection (http://img.youtube.com/vi/82zVzJDMcNo/0.jpg)](http://www.youtube.com/watch?v=82zVzJDMcNo "RealTime Face Detection")]
 
 ## Installation
 
