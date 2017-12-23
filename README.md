@@ -1,7 +1,7 @@
 # RealTime Video Face Detection
 
 ## Demo Link
-[![Face detection (http://img.youtube.com/vi/82zVzJDMcNo/0.jpg)](http://www.youtube.com/watch?v=82zVzJDMcNo "RealTime Face Detection")]
+[![Face detection](http://img.youtube.com/vi/82zVzJDMcNo/0.jpg)](http://www.youtube.com/watch?v=82zVzJDMcNo "RealTime Face Detection")
 
 ## Installation
 
@@ -45,4 +45,15 @@
 * Install boto3, watchdog
   * <pre>
 	  pip2 install boto3 watchdog
-		</pre>
+	</pre>
+   or `python -m pip install boto3 watchdog`
+
+## Execution
+* Clone this repo:
+   * `git clone git@github.com:imyoungyang/video-streaming.git`
+  
+* Execute face detection in terminal
+	* `python face-detection-multi-files.py`
+
+* Open another terminal and exeucte the upload to kinesis videos
+	* `python watch_for_changes.py`
