@@ -27,15 +27,15 @@
 * Install ffmpeg
 	* <pre>
 	  brew install ffmpeg \
-    --with-tools \
-    --with-fdk-aac \
-    --with-freetype \
-    --with-fontconfig \
-    --with-libass \
-    --with-libvorbis \
-    --with-libvpx \
-    --with-opus \
-    --with-x265
+    	--with-tools \
+    	--with-fdk-aac \
+   		--with-freetype \
+	   --with-fontconfig \
+	   --with-libass \
+	   --with-libvorbis \
+	   --with-libvpx \
+	   --with-opus \
+	   --with-x265
     </pre>
 * Install opencv
 	* <pre>
