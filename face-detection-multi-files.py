@@ -31,7 +31,7 @@ while(True):
     ts = time.time()
     outputFileName = outDirectory + datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d-%H-%M-%S') + '.mkv'
     out = cv2.VideoWriter(outputFileName,fourcc, 15.0, (FRAME_WIDTH, FRAME_HEIGHT))
-    while(numFrame <= 20):
+    while(numFrame <= 15):
         # Capture frame-by-frame
         ret, frame = cap.read()
 
@@ -49,11 +49,11 @@ while(True):
             # Draw a rectangle around the faces
             cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
             # Draw eyes
-            # roi_gray = gray[y:y+h, x:x+w]
-            # roi_color = frame[y:y+h, x:x+w]
-            # eyes = eyeCascade.detectMultiScale(roi_gray)
-            # for (ex,ey,ew,eh) in eyes:
-            #     cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
+            roi_gray = gray[y:y+h, x:x+w]
+            roi_color = frame[y:y+h, x:x+w]
+            eyes = eyeCascade.detectMultiScale(roi_gray)
+            for (ex,ey,ew,eh) in eyes:
+                cv2.rectangle(roi_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 
         # draw the text and timestamp on the frame
         tsz = datetime.datetime.fromtimestamp(time.time()).strftime('%Y-%m-%d %H:%M:%S')
@@ -71,10 +71,6 @@ while(True):
 
     # release the output file
     out.release()
-    # Call java to upload to kinese video stream. Sleep to make sure the file output file is done.
-    #time.sleep(1)
-    #p = subprocess.Popen(['./putKVMedia.sh', outputFileName])
-    #os.system('./putKVMedia.sh ' + outputFileName)
 
     if (quitLoop):
         break
@@ -83,6 +79,3 @@ while(True):
 cap.release()
 out.release()
 cv2.destroyAllWindows()
-
-# while p.poll() is None:
-#     time.sleep(1)
