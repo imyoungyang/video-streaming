@@ -28,7 +28,7 @@ class MyHandler(PatternMatchingEventHandler):
 
         if event.event_type == 'modified':
             # print 'upload the file: ' + event.src_path
-            p = subprocess.Popen(['./putKVMedia.sh', accessKey, secretKey, 'ap-northeast-1', 'myDemoVideoStream', event.src_path])
+            p = subprocess.Popen(['./putMkvMedia.sh', accessKey, secretKey, 'ap-northeast-1', 'myDemoVideoStream', event.src_path])
 
     def on_modified(self, event):
         self.process(event)
