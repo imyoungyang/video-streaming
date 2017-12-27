@@ -51,6 +51,8 @@
 ## Execution
 * Clone this repo:
    * `git clone git@github.com:imyoungyang/video-streaming.git`
+
+* Modify the `config.json` to your aws region and kinesis video stream name.
   
 * Execute face detection in terminal
 	* `python face-detection-multi-files.py`
