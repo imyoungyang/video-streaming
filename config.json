@@ -4,5 +4,6 @@
   "kinesisDataStreamName": "myVideoFaceDataStream",
   "streamProcessor": "myStreamProcessorFaces",
   "collectionId": "colMyFaces",
-  "iamRole": "myKinesisVideoStreamsRekognition"
+  "iamRole": "appRole-videoFaceRek",
+  "iamPolicy": "appPolicy-videoFaceRek"
 }
