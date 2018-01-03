@@ -57,30 +57,9 @@ Clone this repo:
 ### Step1: IAM Role
 Create an IAM service role to give Rekognition Video access to your Kinesis video streams and your Kinesis data streams.
 
-* Role name: `myKinesisVideoStreamsRekognition`
-* Trusted entities: `rekognition.amazonaws.com`
-* Attached policies:
-	* AmazonRekognitionServiceRole
-	* Inline policy: S3-Kinesis-Full. You can fine-grain later.
-	
-		```
-		{
-		    "Version": "2012-10-17",
-		    "Statement": [
-		        {
-		            "Effect": "Allow",
-		            "Action": "s3:*",
-		            "Resource": "*"
-		        },
-		        {
-		            "Effect": "Allow",
-		            "Action": "kinesis:*",
-		            "Resource": "*"
-		        }
-		    ]
-		}
-		```
-
+```
+python iam-role-helper.py --create
+```
 		
 ### Step2: Create Collection
 ```
@@ -160,12 +139,12 @@ aws kinesis create-stream \
 * run command `python rekognition-process.py --start` to start the process
 
 ### Step8: Start video stream
-  
-* Execute face detection in terminal
-	* `python face-detection-multi-files.py`
 
 * Open another terminal and exeucte the upload to kinesis videos
 	* `python watch_for_changes.py`
+
+* Execute face detection in terminal
+	* `python face-detection-multi-files.py`
 
 ### Step9: Consume the analysis result
 
