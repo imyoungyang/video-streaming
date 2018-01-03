@@ -48,20 +48,11 @@
 	</pre>
    or `python -m pip install boto3 watchdog`
 
-## Execution
-* Clone this repo:
-   * `git clone git@github.com:imyoungyang/video-streaming.git`
+## Execution - Recognizing Faces in a Streaming Video
 
-* Modify the `config.json` to your aws region and kinesis video stream name.
-  
-* Execute face detection in terminal
-	* `python face-detection-multi-files.py`
+Clone this repo:
 
-* Open another terminal and exeucte the upload to kinesis videos
-	* `python watch_for_changes.py`
-
-## Recognizing Faces in a Streaming Video
-Reference the [AWS developer guide](https://docs.aws.amazon.com/rekognition/latest/dg/recognize-faces-in-a-video-stream.html)
+`git clone git@github.com:imyoungyang/video-streaming.git`
 
 ### Step1: IAM Role
 Create an IAM service role to give Rekognition Video access to your Kinesis video streams and your Kinesis data streams.
@@ -72,7 +63,7 @@ Create an IAM service role to give Rekognition Video access to your Kinesis vide
 	* AmazonRekognitionServiceRole
 	* Inline policy: S3-Kinesis-Full. You can fine-grain later.
 	
-		```json
+		```
 		{
 		    "Version": "2012-10-17",
 		    "Statement": [
@@ -89,25 +80,24 @@ Create an IAM service role to give Rekognition Video access to your Kinesis vide
 		    ]
 		}
 		```
+
 		
 ### Step2: Create Collection
-Create a collection and write down the id.
-
-	```bash
-	aws rekognition create-collection \
-    --collection-id "colMyFaces" \
-    --region us-east-1
-    ```
+```
+aws rekognition create-collection \
+--collection-id "colMyFaces" \
+--region us-east-1
+```
     
 The output arn is like
 	
-	```json
-	{
-    "CollectionArn": "aws:rekognition:us-east-1:<account-id>:collection/colMyFaces",
-    "FaceModelVersion": "2.0",
-    "StatusCode": 200
-	}
-	```
+```json
+{
+"CollectionArn": "aws:rekognition:us-east-1:<account-id>:collection/colMyFaces",
+"FaceModelVersion": "2.0",
+"StatusCode": 200
+}
+```
 
 ### Step3: Add faces to a collection
 
@@ -136,23 +126,23 @@ The output arn is like
    
 ### Step4: Create a Kinesis Video Stream
 
-	```bash
-	aws kinesisvideo create-stream \
-	--stream-name myDemoVideoStream --region us-east-1
-	```
+```
+aws kinesisvideo create-stream \
+--stream-name myDemoVideoStream --region us-east-1
+```
 	
 ### Step5: Create a Kinese Data Stream
 
-	```bash
-	aws kinesis create-stream \
-	--stream-name myVideoFaceDataStream \
-	--shard-count 1 --region us-east-1
-	```
+```
+aws kinesis create-stream \
+--stream-name myVideoFaceDataStream \
+--shard-count 1 --region us-east-1
+```
 
 ### Step6: Create the stream processor
-   * modify the `config.json` put your related information.
+* modify the `config.json` put your related information.
    
-   ```json
+   ```
    {
 	  "region": "us-east-1",
 	  "kinesisVideoStreamName": "myDemoVideoStream",
@@ -162,8 +152,25 @@ The output arn is like
 	  "iamRole": "myKinesisVideoStreamsRekognition"
 	}
 	```
-	* run command `python face-rekognition.py --create` to create a stream processor.
+
+* run command `python rekognition-process.py --create` to create a stream processor.
 	
 ### Step7: Start the stream processor
-	* run command `python face-rekognition.py --start` to start the process
+
+* run command `python rekognition-process.py --start` to start the process
+
+### Step8: Start video stream
+  
+* Execute face detection in terminal
+	* `python face-detection-multi-files.py`
+
+* Open another terminal and exeucte the upload to kinesis videos
+	* `python watch_for_changes.py`
+
+### Step9: Consume the analysis result
+
+* run command `python get-rekognition-result.py`
+
+## Reference
+* [AWS developer guide: recognize faces in a video stream](https://docs.aws.amazon.com/rekognition/latest/dg/recognize-faces-in-a-video-stream.html)
 

@@ -17,7 +17,7 @@ q = Queue()
 with open('config.json') as json_data_file:
     data = json.load(json_data_file)
 region = data['region']
-streamName = data['streamName']
+kinesisVideoStreamName = data['kinesisVideoStreamName']
 
 class MyHandler(PatternMatchingEventHandler):
     patterns = ["*.mkv", "*.mp4"]
@@ -50,7 +50,7 @@ def loop_send(q):
                 # print "upload file: " + q.get()
                 fileName = q.get()
                 if os.path.isfile(fileName):
-                    subprocess.Popen(['./putMkvMedia.sh', accessKey, secretKey, region, streamName, fileName])
+                    subprocess.Popen(['./putMkvMedia.sh', accessKey, secretKey, region, kinesisVideoStreamName, fileName])
     except KeyboardInterrupt:
         return
 

@@ -1,2 +1,5 @@
 .DS_Store
-./outputStream/
+outputStream/
+video-rekognition.md
+face-rekognition-bak.py
+face-detection-output.json
