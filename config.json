@@ -3,6 +3,7 @@
   "kinesisVideoStreamName": "appVideoStream-videoFaceRek",
   "kinesisDataStreamName": "appDataStream-videoFaceRek",
   "streamProcessor": "appStreamProcessor-videoFaceRek",
+  "snsTopicName": "appSNS-videoFaceRek",
   "collectionId": "appCol-videoFaceRek",
   "iamRole": "appRole-videoFaceRek",
   "iamPolicy": "appPolicy-videoFaceRek"

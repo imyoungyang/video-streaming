@@ -6,6 +6,7 @@ import subprocess
 
 def actions(name):
 	subprocess.call(["python", "say_hi.py", name])
+	subprocess.call(["python", "sns-publish.py", name])
 
 with open('config.json') as json_data_file:
     config = json.load(json_data_file)

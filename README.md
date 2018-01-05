@@ -54,11 +54,12 @@ Clone this repo:
 
 `git clone git@github.com:imyoungyang/video-streaming.git`
 
-### Step1: IAM Role
-Create an IAM service role to give Rekognition Video access to your Kinesis video streams and your Kinesis data streams.
+### Step1: IAM Role & SNS Topic
+Create an IAM service role to give Rekognition Video access to your Kinesis video streams and your Kinesis data streams. SNS Topic to recieve the reginition name.
 
 ```
 python iam-role-helper.py --create
+python sns-helper.py --create
 ```
 		
 ### Step2: Create Collection
@@ -86,22 +87,14 @@ pyton data-stream-helper.py --create
 ```
 
 ### Step6: Create the stream processor
-* modify the `config.json` put your related information.
-   
-   ```
-	{
-	  "region": "us-east-1",
-	  "kinesisVideoStreamName": "appVideoStream-videoFaceRek",
-	  "kinesisDataStreamName": "appDataStream-videoFaceRek",
-	  "streamProcessor": "appStreamProcessor-videoFaceRek",
-	  "collectionId": "appCol-videoFaceRek",
-	  "iamRole": "appRole-videoFaceRek",
-	  "iamPolicy": "appPolicy-videoFaceRek"
-	}
-	```
 
-* run command `python rekognition-process.py --create` to create a stream processor.
-* use to check `aws rekognition describe-stream-processor --name myStreamProcessorFaces`
+* run command to create a stream processor.
+
+  `python rekognition-process.py --create`
+  
+* run command to check process status
+
+  `aws rekognition describe-stream-processor --name myStreamProcessorFaces`
 	
 ### Step7: Start the stream processor
 
