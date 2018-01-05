@@ -3,7 +3,7 @@
   "kinesisVideoStreamName": "myDemoVideoStream",
   "kinesisDataStreamName": "myVideoFaceDataStream",
   "streamProcessor": "myStreamProcessorFaces",
-  "collectionId": "colMyFaces",
+  "collectionId": "appCol-videoFaceRek",
   "iamRole": "appRole-videoFaceRek",
   "iamPolicy": "appPolicy-videoFaceRek"
 }

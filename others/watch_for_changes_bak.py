@@ -5,7 +5,7 @@ import boto3
 from watchdog.observers import Observer
 from watchdog.events import PatternMatchingEventHandler
 
-session = boto3.Session()
+session = boto3.Session(profile_name="us-east-1")
 credentials = session.get_credentials()
 current_credentials = credentials.get_frozen_credentials()
 accessKey = current_credentials.access_key

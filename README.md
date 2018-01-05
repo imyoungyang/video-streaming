@@ -62,20 +62,9 @@ python iam-role-helper.py --create
 ```
 		
 ### Step2: Create Collection
+
 ```
-aws rekognition create-collection \
---collection-id "colMyFaces" \
---region us-east-1
-```
-    
-The output arn is like
-	
-```json
-{
-"CollectionArn": "aws:rekognition:us-east-1:<account-id>:collection/colMyFaces",
-"FaceModelVersion": "2.0",
-"StatusCode": 200
-}
+python collection-helper.py --create
 ```
 
 ### Step3: Add faces to a collection
@@ -122,13 +111,14 @@ aws kinesis create-stream \
 * modify the `config.json` put your related information.
    
    ```
-   {
+	{
 	  "region": "us-east-1",
 	  "kinesisVideoStreamName": "myDemoVideoStream",
 	  "kinesisDataStreamName": "myVideoFaceDataStream",
 	  "streamProcessor": "myStreamProcessorFaces",
-	  "collectionId": "colMyFaces",
-	  "iamRole": "myKinesisVideoStreamsRekognition"
+	  "collectionId": "appCol-videoFaceRek",
+	  "iamRole": "appRole-videoFaceRek",
+	  "iamPolicy": "appPolicy-videoFaceRek"
 	}
 	```
 
