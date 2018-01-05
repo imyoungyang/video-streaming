@@ -68,30 +68,11 @@ python collection-helper.py --create
 ```
 
 ### Step3: Add faces to a collection
+  
+```
+python index_faces.py ./young-yang.jpg Young
+```
 
-1. Create S3 bucket
-	
-	`aws s3api create-bucket --bucket beyoung-faces --region us-east-1`
-
-2. Upload images to S3 bucket
-
-	```
-	aws s3 cp Young-Photo.jpg s3://beyoung-faces
-	```
-
-3. Create face indexes
-   
-   *Notes*: replace value of Bucket, Name, colloction-id, and external-image-id
-   
-   ```bash
-   aws rekognition index-faces \
-      --image '{"S3Object":{"Bucket":"beyoung-faces","Name":"young-yang.jpg"}}' \
-      --collection-id "colMyFaces" \
-      --detection-attributes "ALL" \
-      --external-image-id "young-yang" \
-      --region us-east-1
-   ```
-   
 ### Step4: Create a Kinesis Video Stream
 
 ```
