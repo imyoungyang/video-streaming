@@ -2,6 +2,10 @@
 import boto3
 import json
 import sys
+import subprocess
+
+def actions(name):
+	subprocess.call(["python", "say_hi.py", name])
 
 with open('config.json') as json_data_file:
     config = json.load(json_data_file)
@@ -25,4 +29,5 @@ while(True):
 				name = face['Face']['ExternalImageId']
 				confidence = face['Face']['Confidence']
 				print 'match face: %s confidence: %d' % (name, confidence)
+				actions(name)
 		# print FaceSearchResponse['DetectedFace']
