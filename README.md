@@ -104,6 +104,7 @@ aws kinesis create-stream \
 	```
 
 * run command `python rekognition-process.py --create` to create a stream processor.
+* use to check `aws rekognition describe-stream-processor --name myStreamProcessorFaces`
 	
 ### Step7: Start the stream processor
 
