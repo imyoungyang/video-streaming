@@ -76,8 +76,7 @@ python index_faces.py ./young-yang.jpg Young
 ### Step4: Create a Kinesis Video Stream
 
 ```
-aws kinesisvideo create-stream \
---stream-name myDemoVideoStream --region us-east-1
+python video-stream-helper.py --create
 ```
 	
 ### Step5: Create a Kinese Data Stream

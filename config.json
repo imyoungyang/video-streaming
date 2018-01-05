@@ -1,6 +1,6 @@
 {
   "region": "us-east-1",
-  "kinesisVideoStreamName": "myDemoVideoStream",
+  "kinesisVideoStreamName": "appVideoStream-videoFaceRek",
   "kinesisDataStreamName": "myVideoFaceDataStream",
   "streamProcessor": "myStreamProcessorFaces",
   "collectionId": "appCol-videoFaceRek",
