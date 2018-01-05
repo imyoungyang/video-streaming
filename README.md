@@ -82,9 +82,7 @@ python video-stream-helper.py --create
 ### Step5: Create a Kinese Data Stream
 
 ```
-aws kinesis create-stream \
---stream-name myVideoFaceDataStream \
---shard-count 1 --region us-east-1
+pyton data-stream-helper.py --create
 ```
 
 ### Step6: Create the stream processor
@@ -93,9 +91,9 @@ aws kinesis create-stream \
    ```
 	{
 	  "region": "us-east-1",
-	  "kinesisVideoStreamName": "myDemoVideoStream",
-	  "kinesisDataStreamName": "myVideoFaceDataStream",
-	  "streamProcessor": "myStreamProcessorFaces",
+	  "kinesisVideoStreamName": "appVideoStream-videoFaceRek",
+	  "kinesisDataStreamName": "appDataStream-videoFaceRek",
+	  "streamProcessor": "appStreamProcessor-videoFaceRek",
 	  "collectionId": "appCol-videoFaceRek",
 	  "iamRole": "appRole-videoFaceRek",
 	  "iamPolicy": "appPolicy-videoFaceRek"

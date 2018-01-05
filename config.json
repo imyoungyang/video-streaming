@@ -2,7 +2,7 @@
   "region": "us-east-1",
   "kinesisVideoStreamName": "appVideoStream-videoFaceRek",
   "kinesisDataStreamName": "appDataStream-videoFaceRek",
-  "streamProcessor": "myStreamProcessorFaces",
+  "streamProcessor": "appStreamProcessor-videoFaceRek",
   "collectionId": "appCol-videoFaceRek",
   "iamRole": "appRole-videoFaceRek",
   "iamPolicy": "appPolicy-videoFaceRek"
