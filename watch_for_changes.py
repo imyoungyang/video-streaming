@@ -56,8 +56,11 @@ def loop_send(q):
 
 if __name__ == '__main__':
     args = sys.argv[1:]
+    outDirectory = './outputStream/'
+    if not os.path.exists(outDirectory):
+        os.makedirs(outDirectory)
     observer = Observer()
-    observer.schedule(MyHandler(), path=args[0] if args else './outputStream')
+    observer.schedule(MyHandler(), path=args[0] if args else outDirectory)
     observer.start()
     p1 = Process(target=loop_send, args=(q,))
     p1.start()

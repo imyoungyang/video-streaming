@@ -80,10 +80,10 @@ python index_faces.py ./young-yang.jpg Young
 python video-stream-helper.py --create
 ```
 	
-### Step5: Create a Kinese Data Stream
+### Step5: Create a Kinesis Data Stream
 
 ```
-pyton data-stream-helper.py --create
+python data-stream-helper.py --create
 ```
 
 ### Step6: Create the stream processor
@@ -94,7 +94,7 @@ pyton data-stream-helper.py --create
   
 * run command to check process status
 
-  `aws rekognition describe-stream-processor --name myStreamProcessorFaces`
+  `aws rekognition describe-stream-processor --name appStreamProcessor-videoFaceRek`
 	
 ### Step7: Start the stream processor
 
@@ -102,10 +102,10 @@ pyton data-stream-helper.py --create
 
 ### Step8: Start video stream
 
-* Open another terminal and exeucte the upload to kinesis videos
+* Open terminal and exeucte the upload to kinesis videos
 	* `python watch_for_changes.py`
 
-* Execute face detection in terminal
+* Execute face detection in another terminal
 	* `python face-detection-multi-files.py`
 
 ### Step9: Consume the analysis result

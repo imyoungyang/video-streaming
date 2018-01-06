@@ -80,7 +80,7 @@ if __name__ == '__main__':
     collectionId = config['collectionId']
     iamRole = config['iamRole']
 
-    session = boto3.Session(profile_name=region)
+    session = boto3.Session()
     rekClient = session.client('rekognition')
 
     if (args.create):
