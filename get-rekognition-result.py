@@ -3,10 +3,15 @@ import boto3
 import json
 import sys
 import subprocess
+foundedNames = []
 
 def actions(name):
-	subprocess.call(["python", "say_hi.py", name])
-	subprocess.call(["python", "sns-publish.py", name])
+	if !(name in foundedNames):
+		foundedNames.append(name)
+		subprocess.call(["python", "say_hi.py", name])
+		subprocess.call(["python", "sns-publish.py", name])
+	else:
+		print "Founded %d peoples" % len(foundedNames)
 
 with open('config.json') as json_data_file:
     config = json.load(json_data_file)
