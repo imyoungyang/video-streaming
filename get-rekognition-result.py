@@ -6,7 +6,7 @@ import subprocess
 foundedNames = []
 
 def actions(name):
-	if !(name in foundedNames):
+	if not (name in foundedNames):
 		foundedNames.append(name)
 		subprocess.call(["python", "say_hi.py", name])
 		subprocess.call(["python", "sns-publish.py", name])
