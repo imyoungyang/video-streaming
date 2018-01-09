@@ -36,7 +36,7 @@ while(True):
 			for faceSearchResponse in data['FaceSearchResponse']:
 				if len(faceSearchResponse['MatchedFaces']) > 0:
 					print 'match faces: %d' % len(faceSearchResponse['MatchedFaces'])
-					for face in FaceSearchResponse['MatchedFaces']:
+					for face in faceSearchResponse['MatchedFaces']:
 						name = face['Face']['ExternalImageId']
 						confidence = face['Face']['Confidence']
 						print 'match face: %s confidence: %d' % (name, confidence)
