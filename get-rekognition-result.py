@@ -28,20 +28,25 @@ shardIterator = kinesis.get_shard_iterator(StreamName=kinesisDataStream,
 									 ShardIteratorType="LATEST")
 shard_it = shardIterator["ShardIterator"]
 while(True):
-	recs = kinesis.get_records(ShardIterator=shard_it, Limit=1)
-	# print recs
-	shard_it = recs["NextShardIterator"]
-	if len(recs['Records']) > 0:
-		data = json.loads(recs['Records'][0]['Data'])
-		# print data['FaceSearchResponse']
-		if len(data['FaceSearchResponse']) > 0:
-			print 'detect faces: %d' % len(data['FaceSearchResponse'])
-			for faceSearchResponse in data['FaceSearchResponse']:
-				if len(faceSearchResponse['MatchedFaces']) > 0:
-					print 'match faces: %d' % len(faceSearchResponse['MatchedFaces'])
-					for face in faceSearchResponse['MatchedFaces']:
-						name = face['Face']['ExternalImageId']
-						confidence = face['Face']['Confidence']
-						print 'match face: %s confidence: %d' % (name, confidence)
-						actions(name)
+	try:
+		recs = kinesis.get_records(ShardIterator=shard_it, Limit=1)
+		# print recs
+		shard_it = recs["NextShardIterator"]
+		if len(recs['Records']) > 0:
+			data = json.loads(recs['Records'][0]['Data'])
+			# print data['FaceSearchResponse']
+			if len(data['FaceSearchResponse']) > 0:
+				print 'detect faces: %d' % len(data['FaceSearchResponse'])
+				for faceSearchResponse in data['FaceSearchResponse']:
+					if len(faceSearchResponse['MatchedFaces']) > 0:
+						print 'match faces: %d' % len(faceSearchResponse['MatchedFaces'])
+						for face in faceSearchResponse['MatchedFaces']:
+							name = face['Face']['ExternalImageId']
+							confidence = face['Face']['Confidence']
+							print 'match face: %s confidence: %d' % (name, confidence)
+							actions(name)
+	except Exception as e:
+		print e.message
+		time.sleep(1)
+	# avoid ProvisionedThroughputExceededException
 	time.sleep(0.2)
