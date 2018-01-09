@@ -3,6 +3,7 @@ import boto3
 import json
 import sys
 import subprocess
+import time
 foundedNames = []
 
 def actions(name):
@@ -25,9 +26,11 @@ shardId = stream['StreamDescription']['Shards'][0]['ShardId']
 shardIterator = kinesis.get_shard_iterator(StreamName=kinesisDataStream,
 									 ShardId=shardId,
 									 ShardIteratorType="LATEST")
+shard_it = shardIterator["ShardIterator"]
 while(True):
-	recs = kinesis.get_records(ShardIterator=shardIterator['ShardIterator'])
+	recs = kinesis.get_records(ShardIterator=shard_it, Limit=1)
 	# print recs
+	shard_it = recs["NextShardIterator"]
 	if len(recs['Records']) > 0:
 		data = json.loads(recs['Records'][0]['Data'])
 		# print data['FaceSearchResponse']
@@ -41,3 +44,4 @@ while(True):
 						confidence = face['Face']['Confidence']
 						print 'match face: %s confidence: %d' % (name, confidence)
 						actions(name)
+	time.sleep(0.2)
