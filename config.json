@@ -6,5 +6,6 @@
   "snsTopicName": "appSNS-videoFaceRek",
   "collectionId": "appCol-videoFaceRek",
   "iamRole": "appRole-videoFaceRek",
-  "iamPolicy": "appPolicy-videoFaceRek"
+  "iamPolicy": "appPolicy-videoFaceRek",
+  "bucketName": "apps3-videofacerek"
 }
