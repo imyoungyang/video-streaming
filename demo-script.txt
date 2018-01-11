@@ -1,0 +1,8 @@
+Smart Camera 的啟動
+
+Step 1: 接收 辨識結果
+python get-rekognition-result.py
+
+Step 2: 啟動 Smart Camera
+python face-detection-multi-files.py
+

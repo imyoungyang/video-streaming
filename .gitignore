@@ -4,4 +4,13 @@ video-rekognition.md
 face-rekognition-bak.py
 face-detection-output.json
 config-bak.json
-young.mp3
+*.mp3
+images/
+*.mov
+forest.jpg
+guosong.jpg
+zhuobin.jpg
+yunzhang.jpg
+*.pptx
+*-ivan.py
+salaunch-index.sh

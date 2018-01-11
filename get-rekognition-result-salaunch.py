@@ -12,8 +12,8 @@ def actions(name):
 
 	if not (name in foundedNames):
 		foundedNames.append(name)
-		subprocess.call(["python", "say_hi.py", name])
-		subprocess.call(["python", "sns-publish-json.py", snsBody])
+		subprocess.Popen(["python", "say_hi.py", name])
+		subprocess.Popen(["python", "sns-publish-json.py", snsBody])
 	else:
 		print "Founded %d peoples" % len(foundedNames)
 

@@ -1,13 +1,14 @@
 import boto3, os, sys
 import StringIO
 import subprocess
+import random
 from contextlib import closing
 
 def say_hi(name):
     client = boto3.client('polly', region_name='us-east-1')
     response = client.synthesize_speech(
         OutputFormat='mp3',
-        Text='%s Nice to see you.' % name,
+        Text='Nice to see you. %s Please sit at table %d' % (name, random.randint(1,5)),
         VoiceId='Joanna'
     )
     # print response
@@ -22,7 +23,7 @@ def say_hi(name):
 
 def play(fname):
     # play the sound
-    subprocess.call(["afplay", fname])
+    subprocess.Popen(["afplay", fname])
 
 if __name__ == '__main__':
     name = sys.argv[1]
