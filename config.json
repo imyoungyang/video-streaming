@@ -2,6 +2,7 @@
   "region": "us-east-1",
   "kinesisVideoStreamName": "appVideoStream-videoFaceRek",
   "kinesisDataStreamName": "appDataStream-videoFaceRek",
+  "kinesisFaceCountStreamName": "appDataStream-faceCount",
   "streamProcessor": "appStreamProcessor-videoFaceRek",
   "snsTopicName": "appSNS-videoFaceRek",
   "collectionId": "appCol-videoFaceRek",
